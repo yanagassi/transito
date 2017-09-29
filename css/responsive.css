@@ -1,0 +1,31 @@
+
+@media screen and (max-width: 1400px) {
+	#topo_input_form{
+		width: 87%;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+
+		#topo_input_form{
+		width: 85%;
+	}
+
+}
+
+@media screen and (max-width: 800px){
+	.topo{
+		left: 3%;
+		right: 3%;
+		top: 59px;
+	}
+	#topo_input_form{
+		width: 75%;
+	}
+}
+
+@media screen and (max-width: 500px){
+	#topo_input_form{
+		width: 65%;
+	}
+}

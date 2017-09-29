@@ -1,0 +1,146 @@
+body{font-family: 'Roboto', sans-serif; 	background: #d8dbd6;}
+.background{
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 20%;
+	background: #009688;
+
+}
+.topo{
+	position: absolute;
+	left: 10%;
+	right: 10%;
+	box-shadow: 5px 5px 5px  5px  rgba(0,0,0,0.5);
+	top: 80px;
+	border-radius: 5px;
+	bottom: 10%;
+	background: url('bg_chat.jpg');
+}
+
+#topo_menu{
+	position: absolute;
+	background: #eeeeee;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 70px;
+	border:thin solid #cdc6c1;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#topo_img{
+	width: 60px;
+	height: 60px;
+	border-radius:60px;
+	margin-left: 20px;
+	border:thin solid #cdc6c1;
+	margin-top: 5px;
+}
+#topo_input{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 50px;
+	background: #f5f1ee;
+	border:thin solid #cdc6c1;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+
+}
+#topo_titulo{
+	margin-left: 10px;
+	font-size: 20px;
+
+}
+#buton{
+	background:none; 
+	border:none;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+
+#topo_input_form{
+	border-radius: 5px;
+    width: inherit;
+    background-color: #ffffff;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-width: 0;
+    border-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    padding-right: 16px;
+    position: absolute;
+    left: 60px;
+    height: 30px;
+    top: 10px;
+   	width: 90%;
+   	padding-left: 10px;
+}
+
+#enviar{
+	position: absolute;
+	background:none; 
+	border:none;
+	top: 12px;
+	right: 10px;
+}
+
+#btn_pesquisa{
+	position: absolute;
+	right: 10px;
+	top: 20px;
+	background:none; 
+	border:none;
+}
+
+.centro{
+	position: absolute;
+	left: 0.5%;
+	width: 99%;
+	top: 71px;
+	bottom:42px;
+	overflow-y: auto;
+}
+
+#user_foto{
+
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	margin-top: -15px;
+	margin-right: 5px;
+	border:thin solid #cdc6c1;
+
+}
+.mensagem{
+	position: relative;
+	width: 100%;
+	display: flex;
+	background: white;
+	padding-top:20px;
+	padding-bottom: 25px;
+	padding-left: 5px;
+	padding-right:  20px;
+	box-shadow: 0px 2px 0px  0px  rgba(0,0,0,0.5);
+	border-radius: 20px;
+	margin-top: 5px;
+	padding-bottom: 10px;
+}
+#msg_text{
+	position: relative;
+	top: -5px;
+	left: 10px;
+}
+#data{
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+	color: #8c8c8c;
+	font-size: 12px;
+}
