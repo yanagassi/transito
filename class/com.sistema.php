@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL^E_NOTICE);
 	/**
 	* 
 	*/
@@ -98,6 +99,8 @@
 			date_default_timezone_set('America/Sao_Paulo');
 			$con = new conexao;
 			$this->con  = $con->initi();
+			session_start();
+			$this->token = $_SESSION['token'];
 		}
 
 		function chat()
@@ -108,27 +111,55 @@
 				if (empty($key['foto'])) {
 					$key['foto']='img.jpg';
 				}
-				$chat->printa($key['msg'], $key['data'], $key['foto']);
+				$chat -> printa($key['msg'], $key['data'], $key['foto'], $key['user']);
+				
+
 			}
 		}
 
-		function printa($msg, $data, $foto)
+		function printa($msg, $data, $foto, $userDB)
 		{
-			
-			print("<content class='mensagem'>");
-			print("<img id='user_foto' src='img/". $foto . "'>");
-			print("<a id='msg_text'>Anonimo: " . $msg . "</a>");
-			print("<a id='data'>". $data ."</a>");
-			print("</content>");
+			$chat = new chat;
+			$user = $chat-> user();
+			if($user != $userDB)
+			{
+		
+				print("<content class='mensagem'>");
+				print("<img id='user_foto' src='img/". $foto . "'>");
+				print("<a id='msg_text'>Anonimo: " . $msg . "</a>");
+				print("<a id='data'>". $data ."</a>");
+				print("</content>");
+			}else{
+				print("<content class='mensagem2' style='float:right;'>");
+				//print("<img id='user_foto' src='img/". $foto . "'>");
+				print("<a id='msg_text2'>" . $msg . "</a>");
+				print("<a id='data2'>". $data ."</a>");
+				print("</content>");
+			}
 		}
 
 		function insert($msg)
 		{
+			$chat = new chat;
 			$data = date('H:i');
-			$query = $this->con->prepare("INSERT INTO chat (id, msg, data, foto) VALUES (null, :msg, :data, '') ");
-			$query->bindParam(":msg", $msg, PDO::PARAM_STR);
-			$query->bindParam(":data", $data, PDO::PARAM_STR);
+			$user =  $chat-> user();
+			$query = $this->con->prepare("INSERT INTO chat (id, msg, data, foto, user) VALUES (null, ?, ?, '', ?) ");
+			$query->bindParam(1, $msg, PDO::PARAM_STR);
+			$query->bindParam(2, $data, PDO::PARAM_STR);
+			$query->bindParam(3, $user, PDO::PARAM_INT);
 			$query->execute();
+		}
+
+		function user()
+		{
+			$data = $this->con->prepare("SELECT * FROM usuarios WHERE token=:token");
+			$data->bindParam(':token', $this->token, PDO::PARAM_STR);
+			$data->execute();
+			foreach ($data as $row) {
+				$user = $row['id'];
+				return $user; 
+				break;
+			}
 		}
 	}
 ?>
