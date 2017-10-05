@@ -79,9 +79,11 @@ error_reporting(E_ALL^E_NOTICE);
 
 		function token($user)
 		{
+			$ip = $_SERVER['SERVER_ADDR'];
 			$token = md5(uniqid(time()));
-			$query = $this->con->prepare("UPDATE usuarios SET token=:token WHERE usuario=:user");
+			$query = $this->con->prepare("UPDATE usuarios SET token=:token, ip=:ip WHERE usuario=:user");
 			$query->bindParam(':token', $token, PDO::PARAM_STR);
+			$query->bindParam(':ip',$ip, PDO::PARAM_STR);
 			$query->bindParam(':user', $user, PDO::PARAM_STR);
 			$query->execute();
 			return $token;
